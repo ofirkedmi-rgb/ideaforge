@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { TopBar } from "@/components/layout/TopBar";
 import { Sidebar, TabDef } from "@/components/layout/Sidebar";
 import { TabContent } from "@/components/layout/TabContent";
@@ -35,28 +35,35 @@ export default function IdeaForge() {
   const [showPreview, setShowPreview] = useState(false);
   const [generatedContent, setGeneratedContent] = useState("");
 
-  const toggleSection = (key: string) => {
-    const k = key as keyof typeof config.sections;
-    set("sections", { ...config.sections, [k]: !config.sections[k] });
-  };
+  const toggleSection = useCallback(
+    (key: string) => {
+      const k = key as keyof typeof config.sections;
+      set("sections", { ...config.sections, [k]: !config.sections[k] });
+    },
+    [config.sections, set]
+  );
 
   const excludedCount = Object.values(config.sections).filter((v) => !v).length;
   const pendingFeed = config.feed.filter((f) => f.status === "pending").length;
 
-  const tabsWithBadges = TABS.map((t) => ({
-    ...t,
-    badge: t.key === "feed" ? pendingFeed : undefined,
-  }));
+  const tabsWithBadges = useMemo(
+    () =>
+      TABS.map((t) => ({
+        ...t,
+        badge: t.key === "feed" ? pendingFeed : undefined,
+      })),
+    [pendingFeed]
+  );
 
-  const handleGenerate = () => {
+  const handleGenerate = useCallback(() => {
     const md = generateClaudeMD(config);
     downloadFile(md);
-  };
+  }, [config]);
 
-  const handlePreview = () => {
+  const handlePreview = useCallback(() => {
     setGeneratedContent(generateClaudeMD(config));
     setShowPreview(true);
-  };
+  }, [config]);
 
   if (!loaded) return null;
 
