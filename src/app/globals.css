@@ -1,1 +1,52 @@
 @import "tailwindcss";
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-dm-sans), "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+
+  /* Background & Surface */
+  --color-bg: #f5f6f8;
+  --color-card: #ffffff;
+  --color-border: #e5e7eb;
+
+  /* Text */
+  --color-text: #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted: #999999;
+
+  /* Semantic */
+  --color-active: #1a1a1a;
+  --color-success: #059669;
+  --color-warning: #ea580c;
+  --color-error: #dc2626;
+
+  /* Vertical colors */
+  --color-vert-education: #2563eb;
+  --color-vert-health: #059669;
+  --color-vert-seniors: #7c3aed;
+  --color-vert-consumer: #db2777;
+  --color-vert-b2b: #ea580c;
+  --color-vert-religion: #0891b2;
+  --color-vert-wildcard: #64748b;
+
+  /* Radius */
+  --radius-card: 12px;
+  --radius-button: 7px;
+  --radius-pill: 9999px;
+}
+
+/* Base styles */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-active);
+  color: white;
+}
