@@ -6,6 +6,7 @@ import { Sidebar, TabDef } from "@/components/layout/Sidebar";
 import { TabContent } from "@/components/layout/TabContent";
 import { RunTab } from "@/components/tabs/RunTab";
 import { VerticalsTab } from "@/components/tabs/VerticalsTab";
+import { ScoringTab } from "@/components/tabs/ScoringTab";
 import { ResetConfirm } from "@/components/modals/ResetConfirm";
 import { Icons } from "@/components/ui/Icons";
 import { useConfig } from "@/hooks/useConfig";
@@ -71,9 +72,7 @@ export default function IdeaForge() {
             <VerticalsTab config={config} set={set} />
           )}
           {activeTab === "scoring" && (
-            <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
-              Scoring & Goals tab — coming in Phase 5
-            </div>
+            <ScoringTab config={config} set={set} />
           )}
           {activeTab === "feed" && (
             <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
