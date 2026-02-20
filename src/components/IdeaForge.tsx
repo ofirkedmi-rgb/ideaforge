@@ -4,7 +4,9 @@ import { useState } from "react";
 import { TopBar } from "@/components/layout/TopBar";
 import { Sidebar, TabDef } from "@/components/layout/Sidebar";
 import { TabContent } from "@/components/layout/TabContent";
+import { RunTab } from "@/components/tabs/RunTab";
 import { Icons } from "@/components/ui/Icons";
+import { useConfig } from "@/hooks/useConfig";
 
 const TABS: TabDef[] = [
   { key: "run", label: "Run & Generate", icon: <Icons.Zap /> },
@@ -17,36 +19,31 @@ const TABS: TabDef[] = [
 ];
 
 export default function IdeaForge() {
+  const { config, set, resetToDefaults, loaded } = useConfig();
   const [activeTab, setActiveTab] = useState("run");
-  const [sections, setSections] = useState({
-    profile: true,
-    team: true,
-    scoring: true,
-    feed: true,
-    verticals: true,
-  });
-
-  type SectionKey = keyof typeof sections;
 
   const toggleSection = (key: string) => {
-    const k = key as SectionKey;
-    setSections((prev) => ({ ...prev, [k]: !prev[k] }));
+    const k = key as keyof typeof config.sections;
+    set("sections", { ...config.sections, [k]: !config.sections[k] });
   };
 
-  const excludedCount = Object.values(sections).filter((v) => !v).length;
+  const excludedCount = Object.values(config.sections).filter((v) => !v).length;
+  const pendingFeed = config.feed.filter((f) => f.status === "pending").length;
 
   const tabsWithBadges = TABS.map((t) => ({
     ...t,
-    badge: t.key === "feed" ? 0 : undefined,
+    badge: t.key === "feed" ? pendingFeed : undefined,
   }));
+
+  if (!loaded) return null;
 
   return (
     <div className="min-h-screen bg-bg font-sans">
       <TopBar
-        templateName="Default Daily Run"
+        templateName={config.activeTemplate}
         excludedCount={excludedCount}
         onGenerate={() => {}}
-        onReset={() => {}}
+        onReset={resetToDefaults}
       />
 
       <div className="mx-auto flex max-w-[1100px] gap-[14px] px-5 py-[14px]">
@@ -54,23 +51,19 @@ export default function IdeaForge() {
           tabs={tabsWithBadges}
           activeTab={activeTab}
           onTabChange={setActiveTab}
-          sections={sections}
+          sections={{ ...config.sections }}
           onToggleSection={toggleSection}
           summary={{
-            revenue: 5000,
-            ideasPer: 15,
-            novelty: 70,
-            pendingFeed: 0,
-            direction: "",
+            revenue: config.revenue,
+            ideasPer: config.ideasPer,
+            novelty: config.novelty,
+            pendingFeed,
+            direction: config.direction,
           }}
         />
 
         <TabContent>
-          {activeTab === "run" && (
-            <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
-              Run & Generate tab — coming in Phase 3
-            </div>
-          )}
+          {activeTab === "run" && <RunTab config={config} set={set} />}
           {activeTab === "verticals" && (
             <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
               Verticals tab — coming in Phase 4
