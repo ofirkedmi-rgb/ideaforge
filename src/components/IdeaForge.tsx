@@ -9,6 +9,7 @@ import { VerticalsTab } from "@/components/tabs/VerticalsTab";
 import { ScoringTab } from "@/components/tabs/ScoringTab";
 import { FeedTab } from "@/components/tabs/FeedTab";
 import { TeamTab } from "@/components/tabs/TeamTab";
+import { ProfileTab } from "@/components/tabs/ProfileTab";
 import { ResetConfirm } from "@/components/modals/ResetConfirm";
 import { Icons } from "@/components/ui/Icons";
 import { useConfig } from "@/hooks/useConfig";
@@ -83,9 +84,7 @@ export default function IdeaForge() {
             <TeamTab config={config} set={set} />
           )}
           {activeTab === "profile" && (
-            <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
-              Founder Profile tab — coming in Phase 8
-            </div>
+            <ProfileTab config={config} set={set} />
           )}
           {activeTab === "perf" && (
             <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
