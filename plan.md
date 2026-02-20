@@ -58,19 +58,19 @@
 ## Phase 1: Design System & UI Primitives
 > **Goal:** Reusable component library ready for all tabs
 
-- [ ] **Task 1.1:** Build `Button` component
+- [x] **Task 1.1:** Build `Button` component
   - Variants: default, primary, ghost, success
   - Props: `active`, `small`, `onClick`, `children`
   - Styling matches prototype: 7px radius, 12px font, 600 weight
   - 📦 Commit: `feat: Button component`
 
-- [ ] **Task 1.2:** Build `Card` component
+- [x] **Task 1.2:** Build `Card` component
   - Collapsible with chevron animation
   - Props: `title`, `icon`, `badge`, `defaultCollapsed`, `children`
   - Badge with custom bg/color
   - 📦 Commit: `feat: Card component`
 
-- [ ] **Task 1.3:** Build remaining primitives
+- [x] **Task 1.3:** Build remaining primitives
   - `Checkbox` — colored toggle with checkmark SVG
   - `Pill` — tag with optional remove button
   - `Slider` — range input with label, value display, accent color
@@ -78,14 +78,14 @@
   - `Banner` — warning/info/excluded section messages
   - 📦 Commit: `feat: UI primitives (Checkbox, Pill, Slider, Mono, Banner)`
 
-- [ ] **Task 1.4:** Build layout components
+- [x] **Task 1.4:** Build layout components
   - `TopBar` — logo, template name, reset button, generate button
   - `Sidebar` — tab navigation with section toggles, summary panel
   - `TabContent` — wrapper with consistent padding
   - Main layout: sticky top bar, sticky sidebar, scrollable main
   - 📦 Commit: `feat: layout components`
 
-- [ ] **Task 1.5:** Create style guide page (temporary)
+- [x] **Task 1.5:** Create style guide page (temporary)
   - Route: `/styleguide`
   - Shows all UI primitives with different states
   - Verify visual consistency with prototype
@@ -95,6 +95,14 @@
 - 📦 Commit fixes: `fix: design system review fixes`
 - 🏷️ Tag: `v0.2.0` — Design system complete
 - 📦 Push to GitHub
+
+> **Phase 1 Log (2026-02-20):**
+> Completed all 5 tasks. Built 7 UI primitives + 3 layout components + Icons library + style guide.
+> Decision: Created shared Icons.tsx component with all SVG icons from prototype (28 icons).
+> Decision: Built IdeaForge.tsx as the main shell component (client component with tab state).
+> Decision: Pill and Banner are server-compatible (no state); Button, Card, Checkbox, Slider need "use client".
+> Review: Build passes, all components compile, /styleguide route works.
+> Commits: d55958d, fd13ade, 8897d3d, 4da111c, 2d95976
 
 ---
 
