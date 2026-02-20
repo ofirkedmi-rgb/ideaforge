@@ -82,6 +82,7 @@ export default function IdeaForge() {
             novelty: config.novelty,
             pendingFeed,
             direction: config.direction,
+            bizModel: config.bizPreset === "ai_solo" ? "AI Solo" : config.bizPreset === "side_hustle" ? "Side Hustle" : config.bizPreset === "ecommerce" ? "E-Commerce" : config.bizPreset === "agency" ? "AI Agency" : "Custom",
           }}
         />
 

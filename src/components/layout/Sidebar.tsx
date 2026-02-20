@@ -24,6 +24,7 @@ interface SidebarProps {
     novelty: number;
     pendingFeed: number;
     direction: string;
+    bizModel: string;
   };
 }
 
@@ -105,6 +106,7 @@ export function Sidebar({
             ["Ideas", String(summary.ideasPer)],
             ["Novelty", `${summary.novelty}%`],
             ["Feed", `${summary.pendingFeed} pending`],
+            ["Model", summary.bizModel],
           ].map(([k, v]) => (
             <div
               key={k}
