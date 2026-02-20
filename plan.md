@@ -251,7 +251,7 @@
 ## Phase 5: Scoring Tab
 > **Goal:** Revenue targets, criteria weights, constraints
 
-- [ ] **Task 5.1:** Build Scoring tab
+- [x] **Task 5.1:** Build Scoring tab
   - Revenue target slider ($1K-$50K) with quick-select buttons
   - Budget selector (4 options)
   - Criteria weight sliders with names + sum validation
@@ -263,6 +263,13 @@
 - 🔍 **Review 5:** Adjust criteria weights → verify sum badge. Add/remove constraints → verify persistence. Check generated CLAUDE.md scoring section reflects config.
 - 📦 Commit fixes: `fix: Scoring tab review`
 - 📦 Push to GitHub
+
+> **Phase 5 Log (2026-02-20):**
+> Completed Task 5.1. Built ScoringTab.tsx with Revenue+Budget in 2-col grid, Criteria sliders with sum badge, Constraints checklist with add/delete.
+> Decision: Revenue slider step=$1000 with quick-select buttons matching prototype ($1K, $5K, $10K, $20K).
+> Decision: Criteria weight sliders max=40 (matching prototype, prevents single criterion dominating).
+> Review: Build passes, 27 tests pass.
+> Commits: b30177b
 
 ---
 
