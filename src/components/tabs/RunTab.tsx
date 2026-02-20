@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import type { Config } from "@/lib/types";
+import type { Config, Principle } from "@/lib/types";
 import { Icons } from "@/components/ui/Icons";
+import { Card } from "@/components/ui/Card";
+import { Checkbox } from "@/components/ui/Checkbox";
+import { Button } from "@/components/ui/Button";
 
 const EXAMPLE_DIRS = [
   "AI-enhanced side hustles — Amazon FBA, POD, dropshipping.",
@@ -17,6 +20,36 @@ interface RunTabProps {
 
 export function RunTab({ config, set }: RunTabProps) {
   const [showExamples, setShowExamples] = useState(false);
+  const [newPrinciple, setNewPrinciple] = useState("");
+
+  const activePrinciples = config.principles.filter((p) => p.on).length;
+
+  const togglePrinciple = (id: string) => {
+    set(
+      "principles",
+      config.principles.map((p) =>
+        p.id === id ? { ...p, on: !p.on } : p
+      )
+    );
+  };
+
+  const deletePrinciple = (id: string) => {
+    set(
+      "principles",
+      config.principles.filter((p) => p.id !== id)
+    );
+  };
+
+  const addPrinciple = () => {
+    if (!newPrinciple.trim()) return;
+    const p: Principle = {
+      id: `p_${Date.now()}`,
+      t: newPrinciple.trim(),
+      on: true,
+    };
+    set("principles", [...config.principles, p]);
+    setNewPrinciple("");
+  };
 
   return (
     <div className="flex flex-col gap-[10px]">
@@ -83,6 +116,58 @@ export function RunTab({ config, set }: RunTabProps) {
           )}
         </div>
       </div>
+
+      {/* Principles */}
+      <Card
+        title="Principles"
+        icon={<Icons.Heart />}
+        badge={{
+          text: `${activePrinciples} active`,
+          bg: "#fce7f3",
+          color: "#9d174d",
+        }}
+      >
+        <div className="mb-[6px] text-[10px] text-text-muted">
+          Persistent values. These carry across every run and shape which ideas
+          get generated.
+        </div>
+        {config.principles.map((p) => (
+          <div key={p.id} className="flex items-center gap-[7px] py-1">
+            <Checkbox
+              checked={p.on}
+              onChange={() => togglePrinciple(p.id)}
+              color="#db2777"
+            />
+            <span
+              className="flex-1 text-xs"
+              style={{ color: p.on ? "#333" : "#bbb" }}
+            >
+              {p.t}
+            </span>
+            <button
+              type="button"
+              onClick={() => deletePrinciple(p.id)}
+              className="border-0 bg-transparent text-[#ddd] cursor-pointer p-0"
+            >
+              <Icons.Trash />
+            </button>
+          </div>
+        ))}
+        <div className="mt-1 flex gap-[6px]">
+          <input
+            value={newPrinciple}
+            onChange={(e) => setNewPrinciple(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") addPrinciple();
+            }}
+            placeholder="Add a guiding principle..."
+            className="flex-1 rounded-[6px] border border-[#e5e5e5] px-[10px] py-[5px] text-xs outline-none"
+          />
+          <Button onClick={addPrinciple} small>
+            <Icons.Plus />
+          </Button>
+        </div>
+      </Card>
     </div>
   );
 }
