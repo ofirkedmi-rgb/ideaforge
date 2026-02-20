@@ -8,6 +8,7 @@ import { RunTab } from "@/components/tabs/RunTab";
 import { VerticalsTab } from "@/components/tabs/VerticalsTab";
 import { ScoringTab } from "@/components/tabs/ScoringTab";
 import { FeedTab } from "@/components/tabs/FeedTab";
+import { TeamTab } from "@/components/tabs/TeamTab";
 import { ResetConfirm } from "@/components/modals/ResetConfirm";
 import { Icons } from "@/components/ui/Icons";
 import { useConfig } from "@/hooks/useConfig";
@@ -79,9 +80,7 @@ export default function IdeaForge() {
             <FeedTab config={config} set={set} />
           )}
           {activeTab === "team" && (
-            <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
-              Creative Team tab — coming in Phase 7
-            </div>
+            <TeamTab config={config} set={set} />
           )}
           {activeTab === "profile" && (
             <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
