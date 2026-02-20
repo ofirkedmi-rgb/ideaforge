@@ -58,8 +58,15 @@ export function TeamTab({ config, set }: TeamTabProps) {
       <Card
         title="Founders"
         icon={<Icons.Users />}
-        badge={{ text: `${activeFounders}/13` }}
+        badge={{
+          text: `${activeFounders}/13`,
+          bg: activeFounders === 0 ? "#fef2f2" : undefined,
+          color: activeFounders === 0 ? "#dc2626" : undefined,
+        }}
       >
+        {activeFounders === 0 && (
+          <Banner message="No founders active — generation will use simplified mode." />
+        )}
         {Object.entries(CATMETA).map(([cat, m]) => {
           const catFounders = config.founders.filter((f) => f.cat === cat);
           if (catFounders.length === 0) return null;

@@ -361,6 +361,12 @@ export function RunTab({ config, set }: RunTabProps) {
                 : "#065f46",
           }}
         >
+          {config.mix.trend + config.mix.pattern + config.mix.wild !==
+            config.ideasPer && (
+            <div className="mb-1 text-[10px] font-semibold text-warning">
+              Mix total ({config.mix.trend + config.mix.pattern + config.mix.wild}) doesn&apos;t match ideas per run ({config.ideasPer}).
+            </div>
+          )}
           {([
             { k: "trend" as const, l: "\u{1F525} Trend", c: "#ea580c" },
             { k: "pattern" as const, l: "\u{1F3AF} Pattern", c: "#2563eb" },

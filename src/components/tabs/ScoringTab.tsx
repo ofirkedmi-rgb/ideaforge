@@ -127,6 +127,11 @@ export function ScoringTab({ config, set }: ScoringTabProps) {
           color: criteriaSum === 100 ? "#065f46" : "#92400e",
         }}
       >
+        {criteriaSum !== 100 && (
+          <div className="mb-1 text-[10px] font-semibold text-warning">
+            Weights sum to {criteriaSum}% — should total 100%.
+          </div>
+        )}
         {config.criteria.map((c) => (
           <div key={c.k} className="flex items-center gap-2 py-1">
             <span className="flex-1 text-xs font-semibold">{c.n}</span>
