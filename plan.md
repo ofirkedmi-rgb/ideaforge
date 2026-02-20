@@ -1,5 +1,7 @@
 # IdeaForge Build Plan
 
+> **How to execute:** Use the prompts in `prompts.md` — one prompt per phase. Each prompt runs all tasks in that phase, commits after each, and stops at the review checkpoint (🔍) for your approval. See `prompts.md` for the exact copy-paste prompts.
+
 ## Status Legend
 - `[ ]` — Not started
 - `[~]` — In progress
@@ -14,25 +16,25 @@
 ## Phase 0: Project Setup
 > **Goal:** Empty folder → running Next.js app with correct structure
 
-- [ ] **Task 0.1:** Initialize project
+- [x] **Task 0.1:** Initialize project
   - Create Next.js 15 app with TypeScript, Tailwind, App Router
   - Set up `tsconfig.json` with strict mode
   - Verify `npm run dev` serves blank page on localhost:3000
   - 📦 Commit: `feat: initial project scaffold`
 
-- [ ] **Task 0.2:** Set up folder structure
+- [x] **Task 0.2:** Set up folder structure
   - Create all directories: `components/ui`, `components/layout`, `components/tabs`, `components/modals`, `lib`, `data`, `hooks`, `docs`, `docs/reference`
   - Create placeholder `index.ts` barrel exports where needed
   - 📦 Commit: `chore: set up folder structure`
 
-- [ ] **Task 0.3:** GitHub setup
+- [x] **Task 0.3:** GitHub setup
   - Initialize git repo (if not done)
   - Create `.gitignore` (node_modules, .next, .env)
   - Create GitHub repo: `ideaforge`
   - Push initial commit to `main`
   - 📦 Commit + Push: `chore: github setup`
 
-- [ ] **Task 0.4:** Install fonts & configure Tailwind
+- [x] **Task 0.4:** Install fonts & configure Tailwind
   - Add DM Sans + JetBrains Mono via next/font
   - Configure `tailwind.config.ts` with custom colors, fonts, spacing
   - Set up global CSS with base styles (background, font smoothing)
@@ -41,6 +43,15 @@
 - 🔍 **Review 0:** Run `npm run build` — should compile with zero errors. Check that dev server renders. Verify folder structure matches CLAUDE.md architecture.
 - 🏷️ Tag: `v0.1.0` — Project scaffold complete
 - 📦 Push to GitHub
+
+> **Phase 0 Log (2026-02-20):**
+> Completed all 4 tasks. Used Next.js 16.1.6, React 19.2.3, Tailwind CSS 4, TypeScript 5.
+> Decision: Used Tailwind v4 CSS-based `@theme` configuration instead of `tailwind.config.ts` (v4 approach).
+> Decision: Used `next/font/google` for DM Sans + JetBrains Mono (better performance than CDN).
+> Decision: Used `.gitkeep` files for empty directories instead of barrel `index.ts` exports (cleaner for now).
+> Decision: Added `cn()` utility in `lib/cn.ts` for conditional class merging.
+> Review: Build passes with zero errors, folder structure matches CLAUDE.md.
+> Commits: cb596cb, 1660a84, 6de8206, 12c4269
 
 ---
 
