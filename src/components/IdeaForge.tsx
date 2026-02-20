@@ -7,6 +7,7 @@ import { TabContent } from "@/components/layout/TabContent";
 import { RunTab } from "@/components/tabs/RunTab";
 import { VerticalsTab } from "@/components/tabs/VerticalsTab";
 import { ScoringTab } from "@/components/tabs/ScoringTab";
+import { FeedTab } from "@/components/tabs/FeedTab";
 import { ResetConfirm } from "@/components/modals/ResetConfirm";
 import { Icons } from "@/components/ui/Icons";
 import { useConfig } from "@/hooks/useConfig";
@@ -75,9 +76,7 @@ export default function IdeaForge() {
             <ScoringTab config={config} set={set} />
           )}
           {activeTab === "feed" && (
-            <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
-              Seeds & Signals tab — coming in Phase 6
-            </div>
+            <FeedTab config={config} set={set} />
           )}
           {activeTab === "team" && (
             <div className="rounded-[var(--radius-card)] border border-border bg-card p-8 text-center text-text-muted text-sm">
