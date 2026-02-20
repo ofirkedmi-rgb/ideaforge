@@ -109,25 +109,25 @@
 ## Phase 2: Data Layer & Generator Engine
 > **Goal:** Config state management + working CLAUDE.md generation
 
-- [ ] **Task 2.1:** Define TypeScript types
+- [x] **Task 2.1:** Define TypeScript types
   - All interfaces in `lib/types.ts`: Config, Principle, Vertical, Criterion, Constraint, FeedItem, Founder, Advisor
   - Export everything with JSDoc comments
   - 📦 Commit: `feat: TypeScript type definitions`
 
-- [ ] **Task 2.2:** Create defaults + data files
+- [x] **Task 2.2:** Create defaults + data files
   - `lib/defaults.ts` — DEFAULTS constant matching production CLAUDE.md
   - `data/founders.ts` — All 13 founder personas with full detail
   - `data/advisors.ts` — All 7 advisor definitions
   - Verify defaults match Section 3 of PRD exactly
   - 📦 Commit: `feat: defaults and persona data`
 
-- [ ] **Task 2.3:** Port generator engine to TypeScript
+- [x] **Task 2.3:** Port generator engine to TypeScript
   - Port `docs/reference/generate-claude-md.js` → `lib/generate-claude-md.ts`
   - Add proper typing to the function
   - No logic changes — straight port
   - 📦 Commit: `feat: generator engine (TypeScript port)`
 
-- [ ] **Task 2.4:** Write generator tests
+- [x] **Task 2.4:** Write generator tests
   - Test: default config produces valid markdown (700+ lines)
   - Test: empty direction → no direction section
   - Test: all principles off → no principles section
@@ -138,14 +138,14 @@
   - Test: static sections always present (trend scouts, file locations, etc.)
   - 📦 Commit: `test: generator engine unit tests`
 
-- [ ] **Task 2.5:** Build `useConfig` hook + localStorage persistence
+- [x] **Task 2.5:** Build `useConfig` hook + localStorage persistence
   - Central state hook: returns config object + individual setters + reset function
   - Auto-save to localStorage on change (debounced 500ms)
   - Load from localStorage on mount (with DEFAULTS fallback)
   - `resetToDefaults()` clears localStorage and restores DEFAULTS
   - 📦 Commit: `feat: config state hook with persistence`
 
-- [ ] **Task 2.6:** Build download utility
+- [x] **Task 2.6:** Build download utility
   - `lib/download.ts` — generates blob URL, triggers download
   - Filename: `CLAUDE.md`
   - Also: copy-to-clipboard function
@@ -155,6 +155,15 @@
 - 📦 Commit fixes: `fix: generator review fixes`
 - 🏷️ Tag: `v0.3.0` — Generator engine complete
 - 📦 Push to GitHub
+
+> **Phase 2 Log (2026-02-20):**
+> Completed all 6 tasks. 27 unit tests passing.
+> Generator produces 874-line TypeScript file, straight port from reference JS.
+> Decision: Used Vitest v4 (latest) for testing, configured with path aliases.
+> Decision: useConfig hook uses generic `set(key, value)` pattern for flexibility.
+> Decision: storage.ts has try/catch for SSR safety and private browsing.
+> Review: All 27 tests pass, build compiles, types are strict.
+> Commits: 989ce3f, 38cd8ac, 0d69351, d3c7d6b, dbb9044, e0b1478
 
 ---
 
