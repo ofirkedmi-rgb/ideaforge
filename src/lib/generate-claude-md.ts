@@ -117,7 +117,7 @@ Discover, evaluate, and validate business opportunities that are:
 - ${L.team[bizTeam]}
 - ${L.invest[bizInvest]}
 - Marketing budget: ${L.budget[budget]}
-${activePrinciples.some((p) => p.t.toLowerCase().includes("impact")) ? "- Purpose-driven where possible — prefer ideas that create real impact for underserved people" : ""}
+${activePrinciples.some((p) => p.t.toLowerCase().includes("impact")) ? "- Purpose-driven where possible — prefer ideas that create real impact for underserved people\n" : ""}
 ---
 
 `;
@@ -154,7 +154,7 @@ ${skills.length > 0 ? skills.map((s) => `- ${s}`).join("\n") : "- (No specific s
 **You do:** Strategic direction, quality control review, go/no-go decisions, approve marketing content
 **You don't do:** ${bizTouch === "self_serve" ? 'Sales calls, manual outreach, account management, hands-on delivery, being the "face"' : bizTouch === "low" ? "Heavy sales, account management, hands-on delivery" : "Hands-on delivery at scale"}
 
-${bizTouch === "self_serve" ? "If an idea requires sales calls or manual selling → automatic reject.\n" : ""}### Constraints
+${bizTouch === "self_serve" ? "If an idea requires sales calls or manual selling → automatic reject.\n\n" : ""}### Constraints
 - ~${founderTime} total time available
 - No existing audience
 - Has: domains, hosting, tools, Claude Pro/API access
@@ -264,7 +264,7 @@ Trends are not just context — they are the PRIMARY INPUT for ideation. The Cre
 4. Identify arbitrage opportunities
 5. Flag markets with poor UX
 6. Search across DIVERSE verticals (not just B2B SaaS)
-${bizType === "physical" || bizType === "hybrid" ? "7. Scout physical product opportunities, e-commerce trends, and supply chain innovations" : ""}${novelty >= 70 ? "7. Actively seek trends in UNEXPLORED verticals — avoid retreading familiar territory" : ""}
+${bizType === "physical" || bizType === "hybrid" ? "7. Scout physical product opportunities, e-commerce trends, and supply chain innovations" : ""}${novelty >= 70 ? "\n7. Actively seek trends in UNEXPLORED verticals — avoid retreading familiar territory" : ""}
 
 ### Output: \`trends.json\`
 \`\`\`json
@@ -596,7 +596,7 @@ ${bizTouch === "self_serve" || bizTouch === "low" ? "- High-touch onboarding →
 - Self-serve viral mechanics → +5%
 - Poor UX in market → +5%
 - Multiple automated channels → +5%
-${activePrinciples.some((p) => p.t.toLowerCase().includes("quantif")) ? "- Clear, quantifiable ROI for the customer (pay X, save 10X) → +10%\n" : ""}${activePrinciples.some((p) => p.t.toLowerCase().includes("impact")) ? "- Creates meaningful social impact for underserved group → +5%\n" : ""}
+${activePrinciples.some((p) => p.t.toLowerCase().includes("quantif")) ? "- Clear, quantifiable ROI for the customer (pay X, save 10X) → +10%\n" : ""}${activePrinciples.some((p) => p.t.toLowerCase().includes("impact")) ? "- Creates meaningful social impact for underserved group → +5%\n\n" : ""}
 ---
 
 `;
