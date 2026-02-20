@@ -226,7 +226,7 @@
 ## Phase 4: Verticals Tab
 > **Goal:** Vertical weight distribution and focus mode
 
-- [ ] **Task 4.1:** Build Verticals tab
+- [x] **Task 4.1:** Build Verticals tab
   - Vertical list with colored checkboxes, weight sliders (0-50%)
   - Focus Mode target button per vertical
   - Add custom vertical input
@@ -238,6 +238,13 @@
 - 🔍 **Review 4:** Toggle verticals on/off → verify weights update. Enter Focus Mode → verify UI changes. Add custom vertical → verify it persists. Check generated output reflects vertical config.
 - 📦 Commit fixes: `fix: Verticals tab review`
 - 📦 Push to GitHub
+
+> **Phase 4 Log (2026-02-20):**
+> Completed Task 4.1. Built VerticalsTab.tsx with all features: colored checkboxes, weight sliders, Focus Mode target buttons (except Wildcard), custom vertical input with auto-color cycling, sum badge with 100% validation, excluded banner.
+> Decision: Focus Mode target button excluded from Wildcard vertical (matching prototype behavior).
+> Decision: New custom verticals get auto-assigned color from cycling COLORS array.
+> Review: Build passes, 27 tests pass.
+> Commits: 3029ef2
 
 ---
 
