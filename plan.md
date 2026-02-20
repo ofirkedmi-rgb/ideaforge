@@ -302,7 +302,7 @@
 ## Phase 7: Creative Team Tab
 > **Goal:** Configure 13 founders and 7 advisors
 
-- [ ] **Task 7.1:** Build Team tab
+- [x] **Task 7.1:** Build Team tab
   - Founders grouped by category with colored badges
   - Toggle each founder on/off
   - Active count badge
@@ -315,12 +315,19 @@
 - 📦 Commit fixes: `fix: Team tab review`
 - 📦 Push to GitHub
 
+> **Phase 7 Log (2026-02-20):**
+> Completed Task 7.1. Built TeamTab.tsx with founders grouped by 5 categories and advisors with weight sliders.
+> Decision: Used CATMETA constant for category badge colors matching prototype exactly.
+> Decision: Advisor weight slider range 0.5x-2.0x with 0.1 step (matching prototype).
+> Review: Build passes, 27 tests pass.
+> Commits: a3312d7
+
 ---
 
 ## Phase 8: Founder Profile Tab
 > **Goal:** Operator profile with skills, filters, time
 
-- [ ] **Task 8.1:** Build Profile tab
+- [x] **Task 8.1:** Build Profile tab
   - Name + Role text inputs
   - Time availability selector (buttons)
   - Skills as pill tags (add/remove)
@@ -332,6 +339,13 @@
 - 🔍 **Review 8:** Add/remove skills → verify pills update. Toggle profile off → verify constraints still appear in generated CLAUDE.md. Check the full generated output for correct profile section.
 - 📦 Commit fixes: `fix: Profile tab review`
 - 📦 Push to GitHub
+
+> **Phase 8 Log (2026-02-20):**
+> Completed Task 8.1. Built ProfileTab.tsx with Background card (name, role, time), Skills card (blue pills), Hard Filters card (red pills, collapsed by default).
+> Decision: Skills and Hard Filters cards default collapsed matching prototype.
+> Decision: Time availability uses Button active state (same pattern as Templates).
+> Review: Build passes, 27 tests pass.
+> Commits: ca593c5
 
 ---
 
