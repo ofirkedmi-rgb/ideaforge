@@ -5,6 +5,7 @@ import { TopBar } from "@/components/layout/TopBar";
 import { Sidebar, TabDef } from "@/components/layout/Sidebar";
 import { TabContent } from "@/components/layout/TabContent";
 import { RunTab } from "@/components/tabs/RunTab";
+import { ResetConfirm } from "@/components/modals/ResetConfirm";
 import { Icons } from "@/components/ui/Icons";
 import { useConfig } from "@/hooks/useConfig";
 
@@ -21,6 +22,7 @@ const TABS: TabDef[] = [
 export default function IdeaForge() {
   const { config, set, resetToDefaults, loaded } = useConfig();
   const [activeTab, setActiveTab] = useState("run");
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
 
   const toggleSection = (key: string) => {
     const k = key as keyof typeof config.sections;
@@ -43,7 +45,7 @@ export default function IdeaForge() {
         templateName={config.activeTemplate}
         excludedCount={excludedCount}
         onGenerate={() => {}}
-        onReset={resetToDefaults}
+        onReset={() => setShowResetConfirm(true)}
       />
 
       <div className="mx-auto flex max-w-[1100px] gap-[14px] px-5 py-[14px]">
@@ -100,6 +102,15 @@ export default function IdeaForge() {
           )}
         </TabContent>
       </div>
+
+      <ResetConfirm
+        open={showResetConfirm}
+        onCancel={() => setShowResetConfirm(false)}
+        onConfirm={() => {
+          resetToDefaults();
+          setShowResetConfirm(false);
+        }}
+      />
     </div>
   );
 }
