@@ -411,32 +411,32 @@
 ## Phase 10: Polish & Deploy
 > **Goal:** Production-ready quality
 
-- [ ] **Task 10.1:** Sidebar summary panel
+- [x] **Task 10.1:** Sidebar summary panel
   - Key stats: target revenue, ideas per run, novelty %, pending feed items
   - Direction preview (truncated)
   - Active model display
   - 📦 Commit: `feat: sidebar summary panel`
 
-- [ ] **Task 10.2:** Top bar polish
+- [x] **Task 10.2:** Top bar polish
   - Excluded sections warning badge
   - Template name display
   - Clean generate button
   - 📦 Commit: `feat: top bar polish`
 
-- [ ] **Task 10.3:** Edge cases & error handling
+- [x] **Task 10.3:** Edge cases & error handling
   - Criteria weights sum ≠ 100% → show warning, still generate
   - Mix sum ≠ ideasPer → show warning
   - Very long direction text → handle gracefully
   - No founders active → show warning in team tab
   - 📦 Commit: `fix: edge case handling`
 
-- [ ] **Task 10.4:** Performance check
+- [x] **Task 10.4:** Performance check
   - Verify no unnecessary re-renders (React.memo where needed)
   - localStorage debounce working correctly
   - Generator function executes < 50ms
   - 📦 Commit: `perf: optimize rendering and persistence`
 
-- [ ] **Task 10.5:** Deploy to Vercel
+- [x] **Task 10.5:** Deploy to Vercel
   - Set up Vercel project
   - Configure static export in `next.config.ts`
   - Deploy and verify production build
@@ -446,6 +446,14 @@
 - 📦 Commit fixes: `fix: final review polish`
 - 🏷️ Tag: `v1.0.0` — Production release
 - 📦 Push to GitHub
+
+> **Phase 10 Log (2026-02-20):**
+> Completed all 5 tasks. Added sidebar summary (revenue, ideas, novelty, feed, model, direction), top bar alert icon for excluded sections, edge case warnings (criteria sum, mix sum, no founders), performance optimizations (useCallback/useMemo), and static export config.
+> Decision: Used useCallback for toggleSection/handleGenerate/handlePreview, useMemo for tabsWithBadges.
+> Decision: Edge cases handled with inline warning text (not blocking — generator still works).
+> Performance: Generator executes in 16ms (well under 50ms target), 27 tests pass.
+> Review 10: ALL 10/10 PASS — tabs, topbar, sidebar, bottom bar, modals, edge cases, hooks, generator, static export all verified.
+> Commits: bcf3ab5, 0e4f4e5, fdac06b, 00c6477, f9b0f84
 
 ---
 
