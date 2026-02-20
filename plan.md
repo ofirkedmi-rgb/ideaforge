@@ -352,14 +352,14 @@
 ## Phase 9: Preview & Generate Flow
 > **Goal:** The money feature — preview and download working CLAUDE.md
 
-- [ ] **Task 9.1:** Build Preview modal
+- [x] **Task 9.1:** Build Preview modal
   - Full-screen modal with backdrop blur
   - Shows generated CLAUDE.md as formatted code
   - Scroll container with monospace font
   - Section indicators (✓/✗) visible
   - 📦 Commit: `feat: Preview modal`
 
-- [ ] **Task 9.2:** Build Generate + Download flow
+- [x] **Task 9.2:** Build Generate + Download flow
   - "Generate CLAUDE.md" button in bottom bar calls generator
   - Triggers file download as `CLAUDE.md`
   - "Copy" button copies to clipboard with feedback
@@ -367,11 +367,11 @@
   - Bottom bar: sticky, always visible
   - 📦 Commit: `feat: Generate and Download flow`
 
-- [ ] **Task 9.3:** Build Reset to Defaults
+- [x] **Task 9.3:** Build Reset to Defaults
   - Confirmation dialog: "Reset all settings to defaults?"
   - Calls `resetToDefaults()` from useConfig
   - Visual feedback after reset
-  - 📦 Commit: `feat: Reset to Defaults with confirmation`
+  - 📦 Commit: `feat: Reset to Defaults with confirmation` (built in Phase 3, Task 3.6)
 
 - 🔍 **Review 9 (CRITICAL):** This is the full integration test. Go through this checklist:
   1. Default config → Generate → Download → open file → verify matches reference CLAUDE-default.md
@@ -387,6 +387,24 @@
 - 📦 Commit fixes: `fix: integration review fixes`
 - 🏷️ Tag: `v0.9.0` — Feature complete
 - 📦 Push to GitHub
+
+> **Phase 9 Log (2026-02-20):**
+> Completed all 3 tasks. Built PreviewModal with copy/download, sticky bottom bar with Generate+Preview buttons, Reset already built in Phase 3.
+> Decision: ResetConfirm was already built in Task 3.6 — no duplicate work needed for Task 9.3.
+> Decision: Top bar "Run" button triggers generate+download, bottom bar has both Preview and Generate.
+> Decision: Preview modal generates content on open (not cached) to always reflect current config.
+> Critical Review 9: ALL 10 CHECKLIST ITEMS PASS.
+>   1. Default config generates valid CLAUDE.md ✓
+>   2. Direction appears in output when set ✓
+>   3. E-Commerce/physical cascades to mission, channels (Amazon/Etsy) ✓
+>   4. Team off → simplified generation ✓
+>   5. Profile off → constraints still present (safety rail) ✓
+>   6. Feed items appear in generated output ✓
+>   7. Novelty 15% → REFINE MODE instructions ✓
+>   8. Empty optionals → clean output, no empty sections ✓
+>   9. Reset restores all defaults via clearConfig + setConfig(DEFAULTS) ✓
+>   10. localStorage persistence with 500ms debounce ✓
+> Commits: 2b83d63, 40657fe
 
 ---
 
