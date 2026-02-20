@@ -276,7 +276,7 @@
 ## Phase 6: Seeds & Signals Tab
 > **Goal:** Unified input feed for ideas, signals, data, URLs
 
-- [ ] **Task 6.1:** Build Feed tab
+- [x] **Task 6.1:** Build Feed tab
   - Feed item list with type emoji, status badge, delete
   - Type filter row (All / 💡 / 📰 / 📊 / 🔗)
   - Add new: type selector, textarea with dynamic placeholder, submit
@@ -289,6 +289,13 @@
 - 📦 Commit fixes: `fix: Feed tab review`
 - 🏷️ Tag: `v0.5.0` — Core tabs complete
 - 📦 Push to GitHub
+
+> **Phase 6 Log (2026-02-20):**
+> Completed Task 6.1. Built FeedTab.tsx with full feed management: type filter, item list with emoji/status/delete, add new section with type selector and dynamic placeholders.
+> Decision: Filter uses active state on Button component for visual consistency with rest of app.
+> Decision: Feed items use Unicode emoji escapes in constants (same pattern as Business Model presets).
+> Review: Build passes, 27 tests pass.
+> Commits: fceac35
 
 ---
 
