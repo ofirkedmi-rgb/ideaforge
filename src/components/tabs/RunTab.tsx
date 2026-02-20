@@ -7,6 +7,8 @@ import { Card } from "@/components/ui/Card";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { Button } from "@/components/ui/Button";
 import { Pill } from "@/components/ui/Pill";
+import { Slider } from "@/components/ui/Slider";
+import { Mono } from "@/components/ui/Mono";
 
 const EXAMPLE_DIRS = [
   "AI-enhanced side hustles — Amazon FBA, POD, dropshipping.",
@@ -286,6 +288,102 @@ export function RunTab({ config, set }: RunTabProps) {
           </div>
         )}
       </Card>
+
+      {/* Generation + Idea Mix — 2-column grid */}
+      <div className="grid grid-cols-2 gap-[10px]">
+        {/* Generation */}
+        <Card title="Generation" icon={<Icons.Settings />}>
+          <Slider
+            label="Ideas per run"
+            value={config.ideasPer}
+            min={5}
+            max={30}
+            onChange={(v) => set("ideasPer", v)}
+          />
+          <Slider
+            label="Deck cutoff"
+            value={config.deckCut}
+            min={60}
+            max={95}
+            onChange={(v) => set("deckCut", v)}
+            suffix="%"
+          />
+          <div>
+            <div className="mb-[2px] flex justify-between">
+              <span className="text-[11px] font-semibold text-[#888]">
+                Novelty vs. Iteration
+              </span>
+              <Mono
+                color={
+                  config.novelty >= 70
+                    ? "#059669"
+                    : config.novelty >= 40
+                      ? "#1a1a1a"
+                      : "#ea580c"
+                }
+              >
+                {config.novelty}%
+              </Mono>
+            </div>
+            <input
+              type="range"
+              min={0}
+              max={100}
+              value={config.novelty}
+              onChange={(e) => set("novelty", Number(e.target.value))}
+              className="w-full"
+              style={{
+                accentColor: config.novelty >= 70 ? "#059669" : "#ea580c",
+              }}
+            />
+            <div className="flex justify-between text-[9px] text-[#bbb]">
+              <span>Refine winners</span>
+              <span>Explore new</span>
+            </div>
+          </div>
+        </Card>
+
+        {/* Idea Mix */}
+        <Card
+          title="Idea Mix"
+          icon={<Icons.Shuffle />}
+          badge={{
+            text: `${config.mix.trend + config.mix.pattern + config.mix.wild}`,
+            bg:
+              config.mix.trend + config.mix.pattern + config.mix.wild !==
+              config.ideasPer
+                ? "#fef3c7"
+                : "#ecfdf5",
+            color:
+              config.mix.trend + config.mix.pattern + config.mix.wild !==
+              config.ideasPer
+                ? "#92400e"
+                : "#065f46",
+          }}
+        >
+          {([
+            { k: "trend" as const, l: "\u{1F525} Trend", c: "#ea580c" },
+            { k: "pattern" as const, l: "\u{1F3AF} Pattern", c: "#2563eb" },
+            { k: "wild" as const, l: "\u{1F3B2} Wild", c: "#7c3aed" },
+          ]).map((m) => (
+            <div key={m.k} className="flex items-center gap-2 py-1">
+              <span className="min-w-[68px] text-xs font-semibold">{m.l}</span>
+              <input
+                type="range"
+                min={0}
+                max={10}
+                value={config.mix[m.k]}
+                onChange={(e) =>
+                  set("mix", { ...config.mix, [m.k]: Number(e.target.value) })
+                }
+                className="flex-1"
+                style={{ accentColor: m.c }}
+              />
+              <Mono color={m.c}>{config.mix[m.k]}</Mono>
+            </div>
+          ))}
+        </Card>
+      </div>
     </div>
   );
 }
