@@ -384,6 +384,32 @@ export function RunTab({ config, set }: RunTabProps) {
           ))}
         </Card>
       </div>
+
+      {/* Templates (display only) */}
+      <Card title="Templates" icon={<Icons.Calendar />}>
+        <div className="flex flex-wrap gap-[5px]">
+          {["Default", "Side Hustle AI", "Impact Focus", "E-Commerce"].map(
+            (t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => set("activeTemplate", t)}
+                className="flex cursor-pointer items-center gap-1 rounded-[var(--radius-button)] px-[10px] py-1 text-[11px] font-semibold"
+                style={{
+                  background:
+                    config.activeTemplate === t ? "#f0fdf4" : "#fafafa",
+                  border: `1.5px solid ${config.activeTemplate === t ? "#86efac" : "#e8e8e8"}`,
+                }}
+              >
+                {config.activeTemplate === t && (
+                  <span className="inline-block h-[5px] w-[5px] rounded-full bg-success" />
+                )}
+                {t}
+              </button>
+            )
+          )}
+        </div>
+      </Card>
     </div>
   );
 }
