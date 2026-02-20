@@ -170,38 +170,38 @@
 ## Phase 3: Run Tab (Core UI)
 > **Goal:** The most important tab — direction, principles, business model, generation controls
 
-- [ ] **Task 3.1:** Build Direction field
+- [x] **Task 3.1:** Build Direction field
   - Compass icon, textarea, placeholder
   - Dark border when filled, clear button
   - "Show examples" toggle with 3 pre-written directions
   - 📦 Commit: `feat: Direction field`
 
-- [ ] **Task 3.2:** Build Principles card
+- [x] **Task 3.2:** Build Principles card
   - Checklist with toggle, delete, add new
   - 3 defaults pre-loaded
   - Heart icon, active count badge
   - 📦 Commit: `feat: Principles card`
 
-- [ ] **Task 3.3:** Build Business Model card
+- [x] **Task 3.3:** Build Business Model card
   - Preset buttons (AI Solopreneur, Side Hustle, E-Commerce, AI Agency, Custom)
   - Summary pills when collapsed
   - "Customize" expands 5 parameter rows
   - Preset selection auto-sets all 5 params
   - 📦 Commit: `feat: Business Model card with presets`
 
-- [ ] **Task 3.4:** Build Generation + Idea Mix cards
+- [x] **Task 3.4:** Build Generation + Idea Mix cards
   - Ideas per run slider (5-30)
   - Deck cutoff slider (60-95%)
   - Novelty slider (0-100%) with "Refine ↔ Explore" labels
   - Idea Mix: trend/pattern/wild sliders with sum badge
   - 📦 Commit: `feat: Generation and Idea Mix controls`
 
-- [ ] **Task 3.5:** Build Templates card (display only)
+- [x] **Task 3.5:** Build Templates card (display only)
   - Template name buttons with active indicator
   - No save/load in v1 — just visual
   - 📦 Commit: `feat: Templates card (display only)`
 
-- [ ] **Task 3.6:** Wire Run Tab to useConfig
+- [x] **Task 3.6:** Wire Run Tab to useConfig
   - All controls read from and write to config state
   - Changes auto-persist to localStorage
   - Reset button restores defaults with confirmation
@@ -211,6 +211,15 @@
 - 📦 Commit fixes: `fix: Run tab review fixes`
 - 🏷️ Tag: `v0.4.0` — Run tab complete
 - 📦 Push to GitHub
+
+> **Phase 3 Log (2026-02-20):**
+> Completed all 6 tasks. Built complete Run tab with 5 sections: Direction, Principles, Business Model, Generation+Idea Mix, Templates.
+> Decision: Wired useConfig from Task 3.1 (not deferred to 3.6) for immediate interactivity.
+> Decision: Built ResetConfirm modal in src/components/modals/ with backdrop blur and confirmation dialog.
+> Decision: Used `{...config.sections}` spread to satisfy TypeScript `Record<string, boolean>` vs `Sections` interface in Sidebar props.
+> Decision: Business Model presets use emoji Unicode escapes in constants to avoid rendering issues.
+> Review: Build passes, 27 tests pass, all controls functional.
+> Commits: 4b92941, b86daa8, ad30435, 94df123, 7853558, 433d056
 
 ---
 
